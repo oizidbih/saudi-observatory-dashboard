@@ -25,8 +25,10 @@ The Saudi Observatory Dashboard enables monitoring of indicators and development
 ### Phase 4 - ✅ Completed
 - **MAWANI (Saudi Ports Authority)**: Seaport efficiency, capacity, and operations
 
-### Future Phases - 🚧 Coming Soon
+### Phase 5 - ✅ Completed
 - **Saudi Arabian Railway Company (SAR)**: Rail network performance, safety, and utilization
+
+### Future Phases - 🚧 Coming Soon
 - **Road General Authority (RGA)**: Road network condition, safety, and traffic flow
 - **Saudi Post (SPL)**: Parcel processing, logistics, and last-mile delivery
 
@@ -94,7 +96,8 @@ src/
 │   │   ├── MTLSDashboard.tsx    # Ministry of Transport dashboard
 │   │   ├── TGADashboard.tsx     # Transport General Authority dashboard
 │   │   ├── GACADashboard.tsx    # Civil Aviation Authority dashboard
-│   │   └── MAWANIDashboard.tsx  # Saudi Ports Authority dashboard
+│   │   ├── MAWANIDashboard.tsx  # Saudi Ports Authority dashboard
+│   │   └── SARDashboard.tsx     # Saudi Railway Company dashboard
 │   ├── Header.tsx               # Main header component
 │   ├── Sidebar.tsx              # Navigation sidebar
 │   ├── SaudiLogo.tsx           # Saudi government logo
@@ -134,6 +137,13 @@ src/
 - Port Congestion Forecasting
 - Smart Berth Allocation System
 
+### SAR (Saudi Arabian Railway Company)
+- Railway Operations Performance Dashboard
+- Delay Root Cause Analysis
+- Passenger Demand Forecasting
+- Predictive Maintenance Scheduling
+- Dynamic Train Scheduling Optimization
+
 ## Contributing
 
 1. Fork the repository
@@ -150,7 +160,7 @@ The project follows a phased approach where each phase implements a complete das
 - **Phase 2**: TGA - Land transport regulation ✅  
 - **Phase 3**: GACA - Aviation authority ✅
 - **Phase 4**: MAWANI - Ports authority ✅
-- **Phase 5**: SAR - Railway company 🚧
+- **Phase 5**: SAR - Railway company ✅
 - **Phase 6**: RGA - Road authority 🚧
 - **Phase 7**: SPL - Postal services 🚧
 
