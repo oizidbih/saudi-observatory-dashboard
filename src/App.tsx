@@ -15,9 +15,10 @@ import DescriptiveAnalytics from './components/analytics/DescriptiveAnalytics';
 import DiagnosticAnalytics from './components/analytics/DiagnosticAnalytics';
 import PredictiveAnalytics from './components/analytics/PredictiveAnalytics';
 import PrescriptiveAnalytics from './components/analytics/PrescriptiveAnalytics';
+import HomePage from './components/HomePage';
 
 function App() {
-  const [selectedEntity, setSelectedEntity] = useState<string>('mtls');
+  const [selectedEntity, setSelectedEntity] = useState<string>('home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -39,7 +40,9 @@ function App() {
           <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
             <Routes>
               <Route path="/" element={
-                selectedEntity === 'mtls' ? (
+                selectedEntity === 'home' ? (
+                  <HomePage onEntitySelect={setSelectedEntity} />
+                ) : selectedEntity === 'mtls' ? (
                   <MTLSDashboard />
                 ) : selectedEntity === 'tga' ? (
                   <TGADashboard />
@@ -70,6 +73,7 @@ function App() {
                   />
                 )
               } />
+              <Route path="/home" element={<HomePage onEntitySelect={setSelectedEntity} />} />
               <Route path="/mtls" element={<MTLSDashboard />} />
               <Route path="/tga" element={<TGADashboard />} />
               <Route path="/gaca" element={<GACADashboard />} />

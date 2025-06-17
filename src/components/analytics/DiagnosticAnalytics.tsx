@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingUp, Search, AlertTriangle, Zap, CheckCircle, ArrowRight, Users, Clock } from 'lucide-react';
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, ScatterChart, Scatter, AreaChart, Area } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line } from 'recharts';
 
 const DiagnosticAnalytics: React.FC = () => {
   // Sample data for visualizations

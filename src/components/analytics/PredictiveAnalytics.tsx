@@ -1,6 +1,6 @@
 import React from 'react';
-import { Target, TrendingUp, AlertCircle, Brain, CheckCircle, ArrowRight, Users, Zap } from 'lucide-react';
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area, BarChart, Bar, ComposedChart } from 'recharts';
+import { Target, TrendingUp, AlertCircle, Brain, CheckCircle, ArrowRight, Zap } from 'lucide-react';
+import { ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, ComposedChart, Line } from 'recharts';
 
 const PredictiveAnalytics: React.FC = () => {
   // Sample data for visualizations

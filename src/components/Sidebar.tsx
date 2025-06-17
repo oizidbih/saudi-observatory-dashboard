@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, BarChart3, TrendingUp, Brain, Target } from 'lucide-react';
+import { X, BarChart3, TrendingUp, Brain, Target, Home } from 'lucide-react';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -76,8 +76,25 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
         </div>
 
         <div className="flex-1 overflow-y-auto">
-          {/* Entities */}
+          {/* Home */}
           <div className="p-4">
+            <button
+              onClick={() => onEntityChange('home')}
+              className={`
+                w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors mb-4
+                ${selectedEntity === 'home'
+                  ? 'bg-saudi-green-100 text-saudi-green-900 border-r-2 border-saudi-green-600'
+                  : 'text-gray-700 hover:bg-gray-100'
+                }
+              `}
+            >
+              <Home className="mr-3 h-5 w-5 text-saudi-green-600" />
+              <span className="truncate">Home Dashboard</span>
+            </button>
+          </div>
+
+          {/* Entities */}
+          <div className="p-4 border-t border-gray-200">
             <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
               Entities
             </h3>

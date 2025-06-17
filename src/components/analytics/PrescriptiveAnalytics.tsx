@@ -1,6 +1,6 @@
 import React from 'react';
 import { Brain, Zap, Settings, Bot, CheckCircle, ArrowRight, Users, Clock, Target } from 'lucide-react';
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 
 const PrescriptiveAnalytics: React.FC = () => {
   // Sample data for visualizations
