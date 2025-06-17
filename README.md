@@ -1,4 +1,4 @@
-# Saudi Observatory Dashboard 🇸🇦
+# Observatory Dashboard
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/53b86bc0-807b-4bea-ba33-a91b8ef8844e/deploy-status)](https://app.netlify.com/sites/saudi-observatory-dashboard/deploys)
 
