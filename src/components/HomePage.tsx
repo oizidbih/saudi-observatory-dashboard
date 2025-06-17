@@ -1,6 +1,6 @@
 import React from 'react';
-import { BarChart3, TrendingUp, Target, Brain, Users, Activity, AlertCircle, CheckCircle, ArrowRight, Zap, Clock, Globe } from 'lucide-react';
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, PieChart, Pie, Cell, AreaChart, Area } from 'recharts';
+import { BarChart3, Target, Brain, Users, Activity, CheckCircle, ArrowRight, Zap, Clock, Globe } from 'lucide-react';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
 
 interface HomePageProps {
   onEntitySelect: (entity: string) => void;
@@ -15,15 +15,7 @@ const HomePage: React.FC<HomePageProps> = ({ onEntitySelect }) => {
     { label: 'Safety Index', value: '8.7/10', trend: '+0.4', color: 'text-saudi-green-600', bg: 'bg-saudi-green-100' }
   ];
 
-  const entityPerformance = [
-    { entity: 'MTLS', score: 92, kpis: 15, status: 'Excellent', color: '#005430' },
-    { entity: 'TGA', score: 87, kpis: 18, status: 'Good', color: '#3e9b87' },
-    { entity: 'GACA', score: 84, kpis: 16, status: 'Good', color: '#58b5a3' },
-    { entity: 'MAWANI', score: 89, kpis: 14, status: 'Excellent', color: '#8BAA99' },
-    { entity: 'SAR', score: 91, kpis: 17, status: 'Excellent', color: '#005430' },
-    { entity: 'RGA', score: 85, kpis: 19, status: 'Good', color: '#3e9b87' },
-    { entity: 'SPL', score: 88, kpis: 13, status: 'Good', color: '#58b5a3' }
-  ];
+
 
   const analyticsMaturity = [
     { level: 'Descriptive', entities: 7, coverage: 100, color: '#3b82f6' },
