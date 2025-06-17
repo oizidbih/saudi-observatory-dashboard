@@ -1,152 +1,144 @@
 import React, { useState } from 'react';
-import { BarChart3, TrendingUp, Target, Brain, ArrowUpRight, ArrowDownRight, Minus, Construction, AlertTriangle, Activity, Shield, Navigation, Zap } from 'lucide-react';
-import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Line, PieChart, Pie, Cell, AreaChart, Area, ComposedChart, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { BarChart3, TrendingUp, Target, Brain, ArrowUpRight, ArrowDownRight, Minus, Package, Truck, Clock, MapPin, Star, TrendingDown } from 'lucide-react';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, ComposedChart } from 'recharts';
 
-const RGADashboard: React.FC = () => {
+const SPLDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('overview');
 
-  // Mock data for RGA demonstrations
-  const roadConditionData = [
-    { month: 'Jan', excellent: 45, good: 35, fair: 15, poor: 5, maintenance: 120, incidents: 85 },
-    { month: 'Feb', excellent: 47, good: 36, fair: 13, poor: 4, maintenance: 95, incidents: 78 },
-    { month: 'Mar', excellent: 49, good: 37, fair: 11, poor: 3, maintenance: 110, incidents: 72 },
-    { month: 'Apr', excellent: 52, good: 38, fair: 8, poor: 2, maintenance: 85, incidents: 65 },
-    { month: 'May', excellent: 54, good: 39, fair: 6, poor: 1, maintenance: 75, incidents: 58 },
-    { month: 'Jun', excellent: 56, good: 40, fair: 4, poor: 0, maintenance: 65, incidents: 52 }
+  // Mock data for SPL demonstrations
+  const deliveryPerformanceData = [
+    { month: 'Jan', onTime: 82.5, sameDay: 45, nextDay: 78, international: 89, volume: 2.8 },
+    { month: 'Feb', onTime: 84.2, sameDay: 48, nextDay: 81, international: 91, volume: 3.1 },
+    { month: 'Mar', onTime: 86.8, sameDay: 52, nextDay: 84, international: 93, volume: 3.5 },
+    { month: 'Apr', onTime: 88.1, sameDay: 55, nextDay: 87, international: 94, volume: 3.8 },
+    { month: 'May', onTime: 89.7, sameDay: 58, nextDay: 89, international: 95, volume: 4.2 },
+    { month: 'Jun', onTime: 91.2, sameDay: 61, nextDay: 91, international: 96, volume: 4.6 }
   ];
 
-  const trafficFlowData = [
-    { hour: '00:00', volume: 1200, speed: 85, congestion: 15 },
-    { hour: '06:00', volume: 4500, speed: 65, congestion: 45 },
-    { hour: '08:00', volume: 8200, speed: 45, congestion: 75 },
-    { hour: '12:00', volume: 6800, speed: 70, congestion: 35 },
-    { hour: '16:00', volume: 7500, speed: 55, congestion: 65 },
-    { hour: '18:00', volume: 9200, speed: 40, congestion: 85 },
-    { hour: '22:00', volume: 3800, speed: 75, congestion: 25 }
+  const lastMileDeliveryData = [
+    { zone: 'Riyadh Central', attempts: 1.2, success: 94, cost: 12.5, time: 35 },
+    { zone: 'Riyadh Suburbs', attempts: 1.4, success: 89, cost: 18.2, time: 52 },
+    { zone: 'Jeddah Central', attempts: 1.3, success: 92, cost: 13.8, time: 38 },
+    { zone: 'Jeddah Suburbs', attempts: 1.5, success: 87, cost: 19.5, time: 55 },
+    { zone: 'Dammam Central', attempts: 1.1, success: 95, cost: 11.9, time: 32 },
+    { zone: 'Rural Areas', attempts: 2.1, success: 76, cost: 28.4, time: 85 }
   ];
 
-  const safetyMetricsData = [
-    { region: 'Riyadh', accidents: 245, fatalities: 12, injuries: 380, severity: 'Medium' },
-    { region: 'Makkah', accidents: 198, fatalities: 8, injuries: 295, severity: 'Low' },
-    { region: 'Eastern Province', accidents: 167, fatalities: 15, injuries: 267, severity: 'High' },
-    { region: 'Asir', accidents: 89, fatalities: 6, injuries: 134, severity: 'Low' },
-    { region: 'Qassim', accidents: 76, fatalities: 4, injuries: 98, severity: 'Low' },
-    { region: 'Tabuk', accidents: 54, fatalities: 3, injuries: 67, severity: 'Low' }
+  const eCommerceData = [
+    { day: 'Mon', orders: 12500, fulfilled: 11800, returned: 350, satisfaction: 4.2 },
+    { day: 'Tue', orders: 14200, fulfilled: 13500, returned: 420, satisfaction: 4.3 },
+    { day: 'Wed', orders: 16800, fulfilled: 15900, returned: 480, satisfaction: 4.1 },
+    { day: 'Thu', orders: 18500, fulfilled: 17600, returned: 520, satisfaction: 4.4 },
+    { day: 'Fri', orders: 22000, fulfilled: 20900, returned: 650, satisfaction: 4.2 },
+    { day: 'Sat', orders: 19500, fulfilled: 18400, returned: 580, satisfaction: 4.5 },
+    { day: 'Sun', orders: 15200, fulfilled: 14500, returned: 380, satisfaction: 4.3 }
   ];
 
-  const infrastructureHealthData = [
-    { category: 'Highways', total: 2500, excellent: 1400, good: 850, fair: 200, poor: 50, health: 92 },
-    { category: 'Urban Roads', total: 8500, excellent: 4250, good: 3400, fair: 680, poor: 170, health: 88 },
-    { category: 'Rural Roads', total: 12000, excellent: 6000, good: 4800, fair: 960, poor: 240, health: 85 },
-    { category: 'Bridges', total: 450, excellent: 315, good: 108, fair: 22, poor: 5, health: 94 },
-    { category: 'Tunnels', total: 85, excellent: 68, good: 15, fair: 2, poor: 0, health: 96 }
+  const networkPerformanceData = [
+    { facility: 'Riyadh Main Hub', capacity: 50000, utilization: 78, throughput: 39000, efficiency: 92 },
+    { facility: 'Jeddah Distribution', capacity: 35000, utilization: 82, throughput: 28700, efficiency: 89 },
+    { facility: 'Dammam Sorting', capacity: 25000, utilization: 74, throughput: 18500, efficiency: 94 },
+    { facility: 'Makkah Center', capacity: 15000, utilization: 68, throughput: 10200, efficiency: 87 },
+    { facility: 'Madinah Center', capacity: 12000, utilization: 71, throughput: 8520, efficiency: 91 }
   ];
 
-  const smartTrafficSystemsData = [
-    { system: 'Traffic Lights', installed: 2850, operational: 2735, maintenance: 85, offline: 30, efficiency: 96 },
-    { system: 'Speed Cameras', installed: 1200, operational: 1165, maintenance: 25, offline: 10, efficiency: 97 },
-    { system: 'Traffic Sensors', installed: 850, operational: 815, maintenance: 25, offline: 10, efficiency: 96 },
-    { system: 'Variable Message Signs', installed: 320, operational: 305, maintenance: 12, offline: 3, efficiency: 95 },
-    { system: 'CCTV Cameras', installed: 1850, operational: 1780, maintenance: 45, offline: 25, efficiency: 96 }
+  const customerSatisfactionData = [
+    { hour: '08:00', calls: 145, resolved: 132, satisfaction: 4.1, avgTime: 3.2 },
+    { hour: '10:00', calls: 289, resolved: 267, satisfaction: 4.3, avgTime: 2.8 },
+    { hour: '12:00', calls: 356, resolved: 325, satisfaction: 4.0, avgTime: 3.5 },
+    { hour: '14:00', calls: 298, resolved: 278, satisfaction: 4.2, avgTime: 3.1 },
+    { hour: '16:00', calls: 412, resolved: 385, satisfaction: 4.4, avgTime: 2.9 },
+    { hour: '18:00', calls: 378, resolved: 352, satisfaction: 4.1, avgTime: 3.3 },
+    { hour: '20:00', calls: 234, resolved: 221, satisfaction: 4.5, avgTime: 2.6 }
   ];
 
-  const roadMaintenanceData = [
-    { week: 'W1', scheduled: 45, completed: 42, delayed: 2, emergency: 8 },
-    { week: 'W2', scheduled: 52, completed: 48, delayed: 3, emergency: 12 },
-    { week: 'W3', scheduled: 38, completed: 36, delayed: 1, emergency: 6 },
-    { week: 'W4', scheduled: 47, completed: 44, delayed: 2, emergency: 9 },
-    { week: 'W5', scheduled: 41, completed: 39, delayed: 1, emergency: 5 },
-    { week: 'W6', scheduled: 35, completed: 34, delayed: 0, emergency: 7 }
+  const serviceTypeDistribution = [
+    { type: 'Express Delivery', volume: 35, color: '#005430' },
+    { type: 'Standard Delivery', volume: 42, color: '#8BAA99' },
+    { type: 'International', volume: 15, color: '#3e9b87' },
+    { type: 'E-commerce', volume: 8, color: '#58b5a3' }
   ];
 
-  const roadTypeDistribution = [
-    { type: 'Highways', km: 2500, color: '#005430' },
-    { type: 'Urban Roads', km: 8500, color: '#8BAA99' },
-    { type: 'Rural Roads', km: 12000, color: '#3e9b87' },
-    { type: 'Service Roads', km: 3200, color: '#58b5a3' }
-  ];
-
-  const performanceRadarData = [
-    { metric: 'Road Condition', value: 92, fullMark: 100 },
-    { metric: 'Traffic Flow', value: 78, fullMark: 100 },
-    { metric: 'Safety Index', value: 85, fullMark: 100 },
-    { metric: 'Maintenance', value: 88, fullMark: 100 },
-    { metric: 'Smart Systems', value: 94, fullMark: 100 },
-    { metric: 'User Satisfaction', value: 82, fullMark: 100 }
+  const operationalMetrics = [
+    { metric: 'Processing Centers', total: 45, operational: 43, maintenance: 2, efficiency: 96 },
+    { metric: 'Delivery Vehicles', total: 2850, operational: 2735, maintenance: 85, efficiency: 96 },
+    { metric: 'Sorting Machines', total: 120, operational: 115, maintenance: 4, efficiency: 96 },
+    { metric: 'Tracking Systems', total: 850, operational: 820, maintenance: 25, efficiency: 96 },
+    { metric: 'Customer Centers', total: 320, operational: 312, maintenance: 6, efficiency: 98 }
   ];
 
   const kpiCards = [
     {
-      title: 'Road Network Condition',
-      value: '92.3%',
-      change: '+1.8%',
+      title: 'On-Time Delivery Rate',
+      value: '91.2%',
+      change: '+1.5%',
       trend: 'up',
       target: '95.0%',
-      description: 'Roads in excellent/good condition'
+      description: 'Packages delivered on scheduled time'
     },
     {
-      title: 'Traffic Flow Efficiency',
-      value: '78.5%',
-      change: '+3.2%',
+      title: 'Processing Volume',
+      value: '4.6M',
+      change: '+0.4M',
       trend: 'up',
-      target: '85.0%',
-      description: 'Average traffic flow efficiency'
+      target: '5.0M',
+      description: 'Monthly packages processed'
     },
     {
-      title: 'Road Safety Index',
-      value: '8.5/10',
-      change: '+0.3',
+      title: 'Customer Satisfaction',
+      value: '4.3/5',
+      change: '+0.1',
       trend: 'up',
-      target: '9.0/10',
-      description: 'Composite safety performance score'
+      target: '4.5/5',
+      description: 'Average customer rating'
     },
     {
-      title: 'Smart Systems Uptime',
-      value: '96.2%',
-      change: '+1.1%',
+      title: 'Last-Mile Efficiency',
+      value: '89.2%',
+      change: '+2.1%',
       trend: 'up',
-      target: '98.0%',
-      description: 'Traffic management systems availability'
+      target: '92.0%',
+      description: 'First-attempt delivery success rate'
     }
   ];
 
   const useCases = {
     descriptive: [
       {
-        title: 'Road Network Performance Dashboard',
-        description: 'Real-time monitoring of road conditions, traffic flow, and infrastructure health across Saudi Arabia',
+        title: 'Postal Operations Performance Dashboard',
+        description: 'Real-time monitoring of delivery performance, processing volumes, and network utilization',
         status: 'active',
-        metrics: ['Road Condition Index', 'Traffic Volume', 'Infrastructure Health', 'Maintenance Status']
+        metrics: ['Delivery Performance', 'Processing Volume', 'Network Utilization', 'Service Quality']
       }
     ],
     diagnostic: [
       {
-        title: 'Traffic Congestion Root Cause Analysis',
-        description: 'Deep analysis of traffic bottlenecks, incident patterns, and infrastructure limitations',
+        title: 'Delivery Delay Root Cause Analysis',
+        description: 'Comprehensive analysis of delivery delays by route, weather, traffic, and operational factors',
         status: 'active',
-        metrics: ['Congestion Patterns', 'Incident Analysis', 'Infrastructure Gaps', 'Capacity Constraints']
+        metrics: ['Delay Patterns', 'Route Analysis', 'Weather Impact', 'Operational Bottlenecks']
       }
     ],
     predictive: [
       {
-        title: 'Road Maintenance Forecasting',
-        description: 'AI-powered prediction of road deterioration and optimal maintenance scheduling',
+        title: 'Demand Forecasting & Capacity Planning',
+        description: 'AI-powered prediction of package volumes and optimal resource allocation',
         status: 'active',
-        metrics: ['Pavement Life Prediction', 'Weather Impact', 'Traffic Load Analysis', 'Maintenance Planning']
+        metrics: ['Volume Prediction', 'Seasonal Patterns', 'E-commerce Growth', 'Capacity Planning']
       },
       {
-        title: 'Traffic Flow Prediction',
-        description: 'Advanced traffic flow forecasting using historical patterns and real-time data',
+        title: 'Last-Mile Delivery Optimization',
+        description: 'Predictive routing and delivery time estimation for improved customer experience',
         status: 'development',
-        metrics: ['Flow Patterns', 'Event Impact', 'Weather Correlation', 'Route Optimization']
+        metrics: ['Route Optimization', 'Delivery Windows', 'Traffic Prediction', 'Customer Preferences']
       }
     ],
     prescriptive: [
       {
-        title: 'Smart Traffic Management System',
-        description: 'AI-optimized traffic signal control and dynamic route guidance for optimal flow',
+        title: 'Smart Logistics Optimization System',
+        description: 'AI-optimized sorting, routing, and delivery scheduling for maximum efficiency',
         status: 'active',
-        metrics: ['Signal Optimization', 'Dynamic Routing', 'Congestion Mitigation', 'Emergency Response']
+        metrics: ['Sorting Optimization', 'Dynamic Routing', 'Resource Allocation', 'Cost Minimization']
       }
     ]
   };
@@ -173,23 +165,10 @@ const RGADashboard: React.FC = () => {
     }
   };
 
-  const getSafetyColor = (severity: string) => {
-    switch (severity) {
-      case 'High':
-        return 'text-red-600 bg-red-100';
-      case 'Medium':
-        return 'text-yellow-600 bg-yellow-100';
-      case 'Low':
-        return 'text-green-600 bg-green-100';
-      default:
-        return 'text-gray-600 bg-gray-100';
-    }
-  };
-
-  const getHealthColor = (health: number) => {
-    if (health >= 95) return 'text-green-600 bg-green-100';
-    if (health >= 90) return 'text-blue-600 bg-blue-100';
-    if (health >= 85) return 'text-yellow-600 bg-yellow-100';
+  const getEfficiencyColor = (efficiency: number) => {
+    if (efficiency >= 95) return 'text-green-600 bg-green-100';
+    if (efficiency >= 90) return 'text-blue-600 bg-blue-100';
+    if (efficiency >= 85) return 'text-yellow-600 bg-yellow-100';
     return 'text-red-600 bg-red-100';
   };
 
@@ -200,14 +179,14 @@ const RGADashboard: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-saudi-green-100 rounded-lg flex items-center justify-center">
-              <Construction className="h-6 w-6 text-saudi-green-600" />
+              <Package className="h-6 w-6 text-saudi-green-600" />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-saudi-green-950">
-                RGA (Road General Authority)
+                SPL (Saudi Post)
               </h1>
               <p className="text-gray-600 mt-1">
-                Road network condition, traffic flow optimization, and infrastructure management
+                Parcel processing, logistics efficiency, and last-mile delivery optimization
               </p>
             </div>
           </div>
@@ -278,90 +257,47 @@ const RGADashboard: React.FC = () => {
 
               {/* Charts Row 1 */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Road Condition Trends */}
+                {/* Delivery Performance Trends */}
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <div className="flex items-center space-x-2 mb-4">
-                    <Activity className="h-5 w-5 text-saudi-green-600" />
+                    <Clock className="h-5 w-5 text-saudi-green-600" />
                     <h3 className="text-lg font-semibold text-gray-900">
-                      Road Condition Trends
+                      Delivery Performance Trends
                     </h3>
                   </div>
                   <ResponsiveContainer width="100%" height={300}>
-                    <AreaChart data={roadConditionData}>
+                    <ComposedChart data={deliveryPerformanceData}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="month" />
-                      <YAxis />
-                      <Tooltip />
-                      <Area type="monotone" dataKey="poor" stackId="1" stroke="#ef4444" fill="#ef4444" name="Poor" />
-                      <Area type="monotone" dataKey="fair" stackId="1" stroke="#f59e0b" fill="#f59e0b" name="Fair" />
-                      <Area type="monotone" dataKey="good" stackId="1" stroke="#8BAA99" fill="#8BAA99" name="Good" />
-                      <Area type="monotone" dataKey="excellent" stackId="1" stroke="#005430" fill="#005430" name="Excellent" />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-
-                {/* Performance Radar */}
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <Shield className="h-5 w-5 text-saudi-green-600" />
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Overall Performance Index
-                    </h3>
-                  </div>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <RadarChart data={performanceRadarData}>
-                      <PolarGrid />
-                      <PolarAngleAxis dataKey="metric" />
-                      <PolarRadiusAxis angle={90} domain={[0, 100]} />
-                      <Radar name="Performance" dataKey="value" stroke="#005430" fill="#005430" fillOpacity={0.3} />
-                    </RadarChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
-
-              {/* Traffic Flow & Road Distribution */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Traffic Flow Analysis */}
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                  <div className="flex items-center space-x-2 mb-4">
-                    <Navigation className="h-5 w-5 text-saudi-green-600" />
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Daily Traffic Flow Analysis
-                    </h3>
-                  </div>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <ComposedChart data={trafficFlowData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="hour" />
                       <YAxis yAxisId="left" />
                       <YAxis yAxisId="right" orientation="right" />
                       <Tooltip />
-                      <Bar yAxisId="left" dataKey="volume" fill="#8BAA99" name="Traffic Volume" />
-                      <Line yAxisId="right" type="monotone" dataKey="speed" stroke="#005430" strokeWidth={2} name="Avg Speed (km/h)" />
+                      <Line yAxisId="left" type="monotone" dataKey="onTime" stroke="#005430" strokeWidth={2} name="On-Time %" />
+                      <Bar yAxisId="right" dataKey="volume" fill="#8BAA99" name="Volume (M)" />
                     </ComposedChart>
                   </ResponsiveContainer>
                 </div>
 
-                {/* Road Network Distribution */}
+                {/* Service Type Distribution */}
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <div className="flex items-center space-x-2 mb-4">
-                    <Construction className="h-5 w-5 text-saudi-green-600" />
+                    <Truck className="h-5 w-5 text-saudi-green-600" />
                     <h3 className="text-lg font-semibold text-gray-900">
-                      Road Network Distribution
+                      Service Type Distribution
                     </h3>
                   </div>
                   <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
                       <Pie
-                        data={roadTypeDistribution}
+                        data={serviceTypeDistribution}
                         cx="50%"
                         cy="50%"
                         outerRadius={80}
                         fill="#8884d8"
-                        dataKey="km"
-                        label={({ type, km }) => `${type}: ${km}km`}
+                        dataKey="volume"
+                        label={({ type, volume }) => `${type}: ${volume}%`}
                       >
-                        {roadTypeDistribution.map((entry, index) => (
+                        {serviceTypeDistribution.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
@@ -371,33 +307,54 @@ const RGADashboard: React.FC = () => {
                 </div>
               </div>
 
-              {/* Maintenance Schedule */}
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <div className="flex items-center space-x-2 mb-4">
-                  <Zap className="h-5 w-5 text-saudi-green-600" />
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Road Maintenance Schedule Performance
-                  </h3>
+              {/* E-commerce & Customer Satisfaction */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* E-commerce Fulfillment */}
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Package className="h-5 w-5 text-saudi-green-600" />
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      E-commerce Fulfillment Analytics
+                    </h3>
+                  </div>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <AreaChart data={eCommerceData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="day" />
+                      <YAxis />
+                      <Tooltip />
+                      <Area type="monotone" dataKey="orders" stackId="1" stroke="#005430" fill="#005430" name="Orders" />
+                      <Area type="monotone" dataKey="fulfilled" stackId="2" stroke="#8BAA99" fill="#8BAA99" name="Fulfilled" />
+                    </AreaChart>
+                  </ResponsiveContainer>
                 </div>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={roadMaintenanceData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="week" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="completed" fill="#005430" name="Completed" />
-                    <Bar dataKey="delayed" fill="#f59e0b" name="Delayed" />
-                    <Bar dataKey="emergency" fill="#ef4444" name="Emergency" />
-                  </BarChart>
-                </ResponsiveContainer>
+
+                {/* Customer Satisfaction */}
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Star className="h-5 w-5 text-saudi-green-600" />
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      Customer Satisfaction Trends
+                    </h3>
+                  </div>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={customerSatisfactionData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="hour" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line type="monotone" dataKey="satisfaction" stroke="#005430" strokeWidth={2} name="Satisfaction Score" />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
 
-              {/* Safety Metrics Table */}
+              {/* Last-Mile Delivery Performance */}
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <div className="flex items-center space-x-2 mb-4">
-                  <AlertTriangle className="h-5 w-5 text-saudi-green-600" />
+                  <MapPin className="h-5 w-5 text-saudi-green-600" />
                   <h3 className="text-lg font-semibold text-gray-900">
-                    Regional Road Safety Metrics
+                    Last-Mile Delivery Performance by Zone
                   </h3>
                 </div>
                 <div className="overflow-x-auto">
@@ -405,41 +362,41 @@ const RGADashboard: React.FC = () => {
                     <thead className="bg-gray-100">
                       <tr>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Region
+                          Zone
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Accidents
+                          Avg Attempts
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Fatalities
+                          Success Rate %
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Injuries
+                          Cost per Delivery (SAR)
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Severity Level
+                          Avg Time (min)
                         </th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {safetyMetricsData.map((region, index) => (
+                      {lastMileDeliveryData.map((zone, index) => (
                         <tr key={index}>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            {region.region}
+                            {zone.zone}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {region.accidents}
+                            {zone.attempts}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {region.fatalities}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {region.injuries}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getSafetyColor(region.severity)}`}>
-                              {region.severity}
+                            <span className={`font-medium ${zone.success >= 90 ? 'text-green-600' : zone.success >= 85 ? 'text-blue-600' : 'text-yellow-600'}`}>
+                              {zone.success}%
                             </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {zone.cost}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {zone.time}
                           </td>
                         </tr>
                       ))}
@@ -448,33 +405,29 @@ const RGADashboard: React.FC = () => {
                 </div>
               </div>
 
-              {/* Infrastructure Health & Smart Systems */}
+              {/* Network Performance & Operational Metrics */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Infrastructure Health */}
+                {/* Network Performance */}
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                    Infrastructure Health Monitoring
+                    Network Performance Monitoring
                   </h3>
                   <div className="space-y-4">
-                    {infrastructureHealthData.map((infra, index) => (
+                    {networkPerformanceData.map((facility, index) => (
                       <div key={index} className="bg-white rounded-lg p-4 border border-gray-200">
                         <div className="flex justify-between items-center mb-2">
-                          <h4 className="text-sm font-medium text-gray-900">{infra.category}</h4>
-                          <span className={`px-2 py-1 text-xs font-medium rounded-full ${getHealthColor(infra.health)}`}>
-                            {infra.health}%
+                          <h4 className="text-sm font-medium text-gray-900">{facility.facility}</h4>
+                          <span className={`px-2 py-1 text-xs font-medium rounded-full ${getEfficiencyColor(facility.efficiency)}`}>
+                            {facility.efficiency}%
                           </span>
                         </div>
                         <div className="text-xs text-gray-600 space-y-1">
                           <div className="flex justify-between">
-                            <span>Total: {infra.total}km</span>
-                            <span>Excellent: {infra.excellent}km</span>
+                            <span>Capacity: {facility.capacity.toLocaleString()}</span>
+                            <span>Utilization: {facility.utilization}%</span>
                           </div>
                           <div className="flex justify-between">
-                            <span>Good: {infra.good}km</span>
-                            <span>Fair: {infra.fair}km</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-red-600">Poor: {infra.poor}km</span>
+                            <span>Throughput: {facility.throughput.toLocaleString()}</span>
                           </div>
                         </div>
                       </div>
@@ -482,28 +435,27 @@ const RGADashboard: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Smart Traffic Systems */}
+                {/* Operational Metrics */}
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                    Smart Traffic Systems Status
+                    Operational Assets Status
                   </h3>
                   <div className="space-y-4">
-                    {smartTrafficSystemsData.map((system, index) => (
+                    {operationalMetrics.map((metric, index) => (
                       <div key={index} className="bg-white rounded-lg p-4 border border-gray-200">
                         <div className="flex justify-between items-center mb-2">
-                          <h4 className="text-sm font-medium text-gray-900">{system.system}</h4>
-                          <span className={`px-2 py-1 text-xs font-medium rounded-full ${getHealthColor(system.efficiency)}`}>
-                            {system.efficiency}%
+                          <h4 className="text-sm font-medium text-gray-900">{metric.metric}</h4>
+                          <span className={`px-2 py-1 text-xs font-medium rounded-full ${getEfficiencyColor(metric.efficiency)}`}>
+                            {metric.efficiency}%
                           </span>
                         </div>
                         <div className="text-xs text-gray-600 space-y-1">
                           <div className="flex justify-between">
-                            <span>Installed: {system.installed}</span>
-                            <span className="text-green-600">Operational: {system.operational}</span>
+                            <span>Total: {metric.total}</span>
+                            <span className="text-green-600">Operational: {metric.operational}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-yellow-600">Maintenance: {system.maintenance}</span>
-                            <span className="text-red-600">Offline: {system.offline}</span>
+                            <span className="text-yellow-600">Maintenance: {metric.maintenance}</span>
                           </div>
                         </div>
                       </div>
@@ -595,4 +547,4 @@ const RGADashboard: React.FC = () => {
   );
 };
 
-export default RGADashboard; 
+export default SPLDashboard; 

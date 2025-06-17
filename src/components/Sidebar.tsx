@@ -15,7 +15,7 @@ const entities = [
   { id: 'mawani', name: 'MAWANI Ports', icon: '🚢', active: true },
   { id: 'sar', name: 'Saudi Railway', icon: '🚄', active: true },
   { id: 'rga', name: 'Road General Authority', icon: '🛣️', active: true },
-  { id: 'spl', name: 'Saudi Post', icon: '📦', active: false }
+  { id: 'spl', name: 'Saudi Post', icon: '📦', active: true }
 ];
 
 const analyticsCategories = [

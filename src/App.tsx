@@ -8,6 +8,7 @@ import GACADashboard from './components/dashboards/GACADashboard';
 import MAWANIDashboard from './components/dashboards/MAWANIDashboard';
 import SARDashboard from './components/dashboards/SARDashboard';
 import RGADashboard from './components/dashboards/RGADashboard';
+import SPLDashboard from './components/dashboards/SPLDashboard';
 import EntitySelector from './components/EntitySelector';
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
                   <SARDashboard />
                 ) : selectedEntity === 'rga' ? (
                   <RGADashboard />
+                ) : selectedEntity === 'spl' ? (
+                  <SPLDashboard />
                 ) : (
                   <EntitySelector 
                     selectedEntity={selectedEntity}
@@ -58,6 +61,7 @@ function App() {
               <Route path="/mawani" element={<MAWANIDashboard />} />
               <Route path="/sar" element={<SARDashboard />} />
               <Route path="/rga" element={<RGADashboard />} />
+              <Route path="/spl" element={<SPLDashboard />} />
             </Routes>
           </main>
         </div>
