@@ -10,6 +10,11 @@ import SARDashboard from './components/dashboards/SARDashboard';
 import RGADashboard from './components/dashboards/RGADashboard';
 import SPLDashboard from './components/dashboards/SPLDashboard';
 import EntitySelector from './components/EntitySelector';
+import AnalyticsMaturity from './components/analytics/AnalyticsMaturity';
+import DescriptiveAnalytics from './components/analytics/DescriptiveAnalytics';
+import DiagnosticAnalytics from './components/analytics/DiagnosticAnalytics';
+import PredictiveAnalytics from './components/analytics/PredictiveAnalytics';
+import PrescriptiveAnalytics from './components/analytics/PrescriptiveAnalytics';
 
 function App() {
   const [selectedEntity, setSelectedEntity] = useState<string>('mtls');
@@ -48,6 +53,16 @@ function App() {
                   <RGADashboard />
                 ) : selectedEntity === 'spl' ? (
                   <SPLDashboard />
+                ) : selectedEntity === 'analytics-maturity' ? (
+                  <AnalyticsMaturity />
+                ) : selectedEntity === 'descriptive' ? (
+                  <DescriptiveAnalytics />
+                ) : selectedEntity === 'diagnostic' ? (
+                  <DiagnosticAnalytics />
+                ) : selectedEntity === 'predictive' ? (
+                  <PredictiveAnalytics />
+                ) : selectedEntity === 'prescriptive' ? (
+                  <PrescriptiveAnalytics />
                 ) : (
                   <EntitySelector 
                     selectedEntity={selectedEntity}
@@ -62,6 +77,11 @@ function App() {
               <Route path="/sar" element={<SARDashboard />} />
               <Route path="/rga" element={<RGADashboard />} />
               <Route path="/spl" element={<SPLDashboard />} />
+              <Route path="/analytics-maturity" element={<AnalyticsMaturity />} />
+              <Route path="/descriptive" element={<DescriptiveAnalytics />} />
+              <Route path="/diagnostic" element={<DiagnosticAnalytics />} />
+              <Route path="/predictive" element={<PredictiveAnalytics />} />
+              <Route path="/prescriptive" element={<PrescriptiveAnalytics />} />
             </Routes>
           </main>
         </div>

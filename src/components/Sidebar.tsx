@@ -114,17 +114,41 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
             <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
               Analytics Maturity
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-2">
+              <button
+                onClick={() => onEntityChange('analytics-maturity')}
+                className={`
+                  w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors
+                  ${selectedEntity === 'analytics-maturity'
+                    ? 'bg-saudi-green-100 text-saudi-green-900 border-r-2 border-saudi-green-600'
+                    : 'text-gray-700 hover:bg-gray-100'
+                  }
+                `}
+              >
+                <Brain className="mr-3 h-5 w-5 text-saudi-green-600" />
+                <span className="truncate">Analytics Framework</span>
+              </button>
+              
               {analyticsCategories.map((category) => {
                 const IconComponent = category.icon;
                 return (
-                  <div key={category.id} className="flex items-start space-x-3 p-2 rounded-lg hover:bg-gray-50">
+                  <button
+                    key={category.id}
+                    onClick={() => onEntityChange(category.id)}
+                    className={`
+                      w-full flex items-start space-x-3 p-2 rounded-lg transition-colors text-left
+                      ${selectedEntity === category.id
+                        ? 'bg-saudi-green-100 text-saudi-green-900'
+                        : 'hover:bg-gray-50'
+                      }
+                    `}
+                  >
                     <IconComponent className={`h-5 w-5 mt-0.5 ${category.color}`} />
                     <div>
                       <h4 className="text-sm font-medium text-gray-900">{category.name}</h4>
                       <p className="text-xs text-gray-500">{category.description}</p>
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </div>

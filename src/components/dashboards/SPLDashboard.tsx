@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { BarChart3, TrendingUp, Target, Brain, ArrowUpRight, ArrowDownRight, Minus, Package, Truck, Clock, MapPin, Star, TrendingDown } from 'lucide-react';
-import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, ComposedChart } from 'recharts';
+import { BarChart3, TrendingUp, Target, Brain, ArrowUpRight, ArrowDownRight, Minus, Package, Truck, Clock, MapPin, Star } from 'lucide-react';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Bar, LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, ComposedChart } from 'recharts';
 
 const SPLDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('overview');
