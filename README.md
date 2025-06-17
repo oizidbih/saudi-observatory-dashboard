@@ -22,8 +22,10 @@ The Saudi Observatory Dashboard enables monitoring of indicators and development
 ### Phase 3 - ✅ Completed
 - **General Authority of Civil Aviation (GACA)**: Air traffic, airport operations, safety, and passenger experience
 
-### Future Phases - 🚧 Coming Soon
+### Phase 4 - ✅ Completed
 - **MAWANI (Saudi Ports Authority)**: Seaport efficiency, capacity, and operations
+
+### Future Phases - 🚧 Coming Soon
 - **Saudi Arabian Railway Company (SAR)**: Rail network performance, safety, and utilization
 - **Road General Authority (RGA)**: Road network condition, safety, and traffic flow
 - **Saudi Post (SPL)**: Parcel processing, logistics, and last-mile delivery
@@ -91,7 +93,8 @@ src/
 │   ├── dashboards/
 │   │   ├── MTLSDashboard.tsx    # Ministry of Transport dashboard
 │   │   ├── TGADashboard.tsx     # Transport General Authority dashboard
-│   │   └── GACADashboard.tsx    # Civil Aviation Authority dashboard
+│   │   ├── GACADashboard.tsx    # Civil Aviation Authority dashboard
+│   │   └── MAWANIDashboard.tsx  # Saudi Ports Authority dashboard
 │   ├── Header.tsx               # Main header component
 │   ├── Sidebar.tsx              # Navigation sidebar
 │   ├── SaudiLogo.tsx           # Saudi government logo
@@ -124,6 +127,13 @@ src/
 - Airspace Congestion Prediction
 - Predictive Maintenance for Airport Infrastructure
 
+### MAWANI (Saudi Ports Authority)
+- Port Operations Performance Dashboard
+- Port Bottleneck Analysis
+- Vessel ETA Prediction
+- Port Congestion Forecasting
+- Smart Berth Allocation System
+
 ## Contributing
 
 1. Fork the repository
@@ -139,7 +149,7 @@ The project follows a phased approach where each phase implements a complete das
 - **Phase 1**: MTLS - Strategic national oversight ✅
 - **Phase 2**: TGA - Land transport regulation ✅  
 - **Phase 3**: GACA - Aviation authority ✅
-- **Phase 4**: MAWANI - Ports authority 🚧
+- **Phase 4**: MAWANI - Ports authority ✅
 - **Phase 5**: SAR - Railway company 🚧
 - **Phase 6**: RGA - Road authority 🚧
 - **Phase 7**: SPL - Postal services 🚧
