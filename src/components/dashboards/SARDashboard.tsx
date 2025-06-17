@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { BarChart3, TrendingUp, Target, Brain, ArrowUpRight, ArrowDownRight, Minus, Train, Clock, Users, Package, Wrench, MapPin } from 'lucide-react';
-import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, ComposedChart } from 'recharts';
+import { BarChart3, TrendingUp, Target, Brain, ArrowUpRight, ArrowDownRight, Minus, Train, Clock, Users, Wrench, MapPin } from 'lucide-react';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Line, PieChart, Pie, Cell, AreaChart, Area, ComposedChart } from 'recharts';
 
 const SARDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('overview');

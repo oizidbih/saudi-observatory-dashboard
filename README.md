@@ -28,8 +28,10 @@ The Saudi Observatory Dashboard enables monitoring of indicators and development
 ### Phase 5 - ✅ Completed
 - **Saudi Arabian Railway Company (SAR)**: Rail network performance, safety, and utilization
 
-### Future Phases - 🚧 Coming Soon
+### Phase 6 - ✅ Completed
 - **Road General Authority (RGA)**: Road network condition, safety, and traffic flow
+
+### Future Phases - 🚧 Coming Soon
 - **Saudi Post (SPL)**: Parcel processing, logistics, and last-mile delivery
 
 ## Features
@@ -97,7 +99,8 @@ src/
 │   │   ├── TGADashboard.tsx     # Transport General Authority dashboard
 │   │   ├── GACADashboard.tsx    # Civil Aviation Authority dashboard
 │   │   ├── MAWANIDashboard.tsx  # Saudi Ports Authority dashboard
-│   │   └── SARDashboard.tsx     # Saudi Railway Company dashboard
+│   │   ├── SARDashboard.tsx     # Saudi Railway Company dashboard
+│   │   └── RGADashboard.tsx     # Road General Authority dashboard
 │   ├── Header.tsx               # Main header component
 │   ├── Sidebar.tsx              # Navigation sidebar
 │   ├── SaudiLogo.tsx           # Saudi government logo
@@ -144,6 +147,13 @@ src/
 - Predictive Maintenance Scheduling
 - Dynamic Train Scheduling Optimization
 
+### RGA (Road General Authority)
+- Road Network Performance Dashboard
+- Traffic Congestion Root Cause Analysis
+- Road Maintenance Forecasting
+- Traffic Flow Prediction
+- Smart Traffic Management System
+
 ## Contributing
 
 1. Fork the repository
@@ -161,7 +171,7 @@ The project follows a phased approach where each phase implements a complete das
 - **Phase 3**: GACA - Aviation authority ✅
 - **Phase 4**: MAWANI - Ports authority ✅
 - **Phase 5**: SAR - Railway company ✅
-- **Phase 6**: RGA - Road authority 🚧
+- **Phase 6**: RGA - Road authority ✅
 - **Phase 7**: SPL - Postal services 🚧
 
 ## License
