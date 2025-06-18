@@ -50,6 +50,15 @@ const analyticsCategories = [
 ];
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEntityChange }) => {
+  // Function to handle entity selection and auto-close on mobile
+  const handleEntitySelect = (entityId: string) => {
+    onEntityChange(entityId);
+    // Auto-close sidebar on mobile/tablet screens (below lg breakpoint)
+    if (window.innerWidth < 1024) {
+      onClose();
+    }
+  };
+
   return (
     <>
       {/* Mobile overlay */}
@@ -80,7 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
           {/* Home */}
           <div className="p-3 sm:p-4">
             <button
-              onClick={() => onEntityChange('home')}
+              onClick={() => handleEntitySelect('home')}
               className={`
                 w-full flex items-center px-3 py-3 text-sm font-medium rounded-md transition-colors mb-4 touch-target
                 ${selectedEntity === 'home'
@@ -104,7 +113,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
               {entities.map((entity) => (
                 <button
                   key={entity.id}
-                  onClick={() => onEntityChange(entity.id)}
+                  onClick={() => handleEntitySelect(entity.id)}
                   disabled={!entity.active}
                   className={`
                     w-full flex items-center px-3 py-3 text-sm font-medium rounded-md transition-colors touch-target
@@ -136,7 +145,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
             </h3>
             <div className="space-y-2">
               <button
-                onClick={() => onEntityChange('analytics-maturity')}
+                onClick={() => handleEntitySelect('analytics-maturity')}
                 className={`
                   w-full flex items-center px-3 py-3 text-sm font-medium rounded-md transition-colors touch-target
                   ${selectedEntity === 'analytics-maturity'
@@ -155,7 +164,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
                 return (
                   <button
                     key={category.id}
-                    onClick={() => onEntityChange(category.id)}
+                    onClick={() => handleEntitySelect(category.id)}
                     className={`
                       w-full flex items-start space-x-3 p-3 rounded-lg transition-colors text-left touch-target
                       ${selectedEntity === category.id
