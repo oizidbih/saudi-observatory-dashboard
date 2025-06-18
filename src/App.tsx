@@ -23,7 +23,7 @@ function App() {
 
   return (
     <Router>
-      <div className="flex h-screen bg-gray-50 ltr">
+      <div className="flex min-h-screen bg-gray-50 ltr">
         <Sidebar 
           isOpen={sidebarOpen} 
           onClose={() => setSidebarOpen(false)}
@@ -31,13 +31,13 @@ function App() {
           onEntityChange={setSelectedEntity}
         />
         
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col min-h-screen">
           <Header 
             onMenuClick={() => setSidebarOpen(true)}
             selectedEntity={selectedEntity}
           />
           
-          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-4 sm:p-6">
+          <main className="flex-1 bg-gray-50 p-4 sm:p-6 pb-8">
             <Routes>
               <Route path="/" element={
                 selectedEntity === 'home' ? (

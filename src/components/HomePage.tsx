@@ -140,7 +140,7 @@ const HomePage: React.FC<HomePageProps> = ({ onEntitySelect }) => {
   };
 
   return (
-    <div className="space-y-6 sm:space-y-8">
+    <div className="space-y-6 sm:space-y-8 pb-8">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-saudi-green-600 to-saudi-green-700 rounded-lg p-4 sm:p-6 lg:p-8 text-white">
         <div className="max-w-4xl">
