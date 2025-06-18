@@ -9,13 +9,13 @@ interface SidebarProps {
 }
 
 const entities = [
-  { id: 'mtls', name: 'Ministry of Transport', icon: '🏛️', active: true },
-  { id: 'tga', name: 'Transport General Authority', icon: '🚛', active: true },
-  { id: 'gaca', name: 'Civil Aviation Authority', icon: '✈️', active: true },
-  { id: 'mawani', name: 'MAWANI Ports', icon: '🚢', active: true },
-  { id: 'sar', name: 'Saudi Railway', icon: '🚄', active: true },
-  { id: 'rga', name: 'Road General Authority', icon: '🛣️', active: true },
-  { id: 'spl', name: 'Saudi Post', icon: '📦', active: true }
+  { id: 'mtls', name: 'Ministry of Transport (MTLS)', icon: '🏛️', active: true },
+  { id: 'tga', name: 'Transport General Authority (TGA)', icon: '🚛', active: true },
+  { id: 'gaca', name: 'Civil Aviation (GACA)', icon: '✈️', active: true },
+  { id: 'mawani', name: 'MAWANI', icon: '🚢', active: true },
+  { id: 'sar', name: 'Saudi Railway (SAR)', icon: '🚄', active: true },
+  { id: 'rga', name: 'Road General Authority (RGA)', icon: '🛣️', active: true },
+  { id: 'spl', name: 'Saudi Post (SPL)', icon: '📦', active: true }
 ];
 
 const analyticsCategories = [
@@ -70,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
 
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-full sm:w-80 md:w-64 lg:w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-50 w-full sm:w-80 md:w-72 lg:w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
         lg:translate-x-0 lg:static lg:inset-0
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
@@ -109,7 +109,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
             <h3 className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
               Entities
             </h3>
-            <nav className="space-y-2">
+            <nav className="space-y-1">
               {entities.map((entity) => (
                 <button
                   key={entity.id}
@@ -143,7 +143,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
             <h3 className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
               Analytics Maturity
             </h3>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <button
                 onClick={() => handleEntitySelect('analytics-maturity')}
                 className={`
@@ -166,18 +166,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
                     key={category.id}
                     onClick={() => handleEntitySelect(category.id)}
                     className={`
-                      w-full flex items-start space-x-3 p-3 rounded-lg transition-colors text-left touch-target
+                      w-full flex items-center px-3 py-2.5 rounded-md transition-colors text-left touch-target
                       ${selectedEntity === category.id
-                        ? 'bg-saudi-green-100 text-saudi-green-900'
-                        : 'hover:bg-gray-50'
+                        ? 'bg-saudi-green-100 text-saudi-green-900 border-r-2 border-saudi-green-600'
+                        : 'text-gray-700 hover:bg-gray-100'
                       }
                     `}
                     style={{ minHeight: '44px' }}
                   >
-                    <IconComponent className={`h-5 w-5 mt-0.5 flex-shrink-0 ${category.color}`} />
-                    <div className="flex-1">
-                      <h4 className="text-sm font-medium text-gray-900">{category.name}</h4>
-                      <p className="text-xs text-gray-500">{category.description}</p>
+                    <IconComponent className={`mr-3 h-4 w-4 flex-shrink-0 ${category.color}`} />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium text-gray-900 truncate">{category.name}</div>
+                      <div className="text-xs text-gray-500 truncate">{category.description}</div>
                     </div>
                   </button>
                 );
