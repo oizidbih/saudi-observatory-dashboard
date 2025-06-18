@@ -84,3 +84,6 @@ coverage/
 # DynamoDB Local files
 .dynamodb/ 
 node_modules
+
+# Local Netlify folder
+.netlify
