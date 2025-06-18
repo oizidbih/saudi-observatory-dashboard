@@ -61,15 +61,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
 
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-50 w-full sm:w-80 md:w-64 lg:w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
         lg:translate-x-0 lg:static lg:inset-0
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-saudi-green-950">Navigation</h2>
+        <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200">
+          <h2 className="text-base sm:text-lg font-semibold text-saudi-green-950">Navigation</h2>
           <button
             onClick={onClose}
-            className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 lg:hidden"
+            className="p-3 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 lg:hidden touch-target"
+            style={{ minHeight: '44px', minWidth: '44px' }}
           >
             <X className="h-5 w-5" />
           </button>
@@ -77,25 +78,26 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
 
         <div className="flex-1 overflow-y-auto">
           {/* Home */}
-          <div className="p-4">
+          <div className="p-3 sm:p-4">
             <button
               onClick={() => onEntityChange('home')}
               className={`
-                w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors mb-4
+                w-full flex items-center px-3 py-3 text-sm font-medium rounded-md transition-colors mb-4 touch-target
                 ${selectedEntity === 'home'
                   ? 'bg-saudi-green-100 text-saudi-green-900 border-r-2 border-saudi-green-600'
                   : 'text-gray-700 hover:bg-gray-100'
                 }
               `}
+              style={{ minHeight: '44px' }}
             >
-              <Home className="mr-3 h-5 w-5 text-saudi-green-600" />
-              <span className="truncate">Home Dashboard</span>
+              <Home className="mr-3 h-5 w-5 text-saudi-green-600 flex-shrink-0" />
+              <span className="truncate text-left">Home Dashboard</span>
             </button>
           </div>
 
           {/* Entities */}
-          <div className="p-4 border-t border-gray-200">
-            <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+          <div className="p-3 sm:p-4 border-t border-gray-200">
+            <h3 className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
               Entities
             </h3>
             <nav className="space-y-2">
@@ -105,7 +107,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
                   onClick={() => onEntityChange(entity.id)}
                   disabled={!entity.active}
                   className={`
-                    w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors
+                    w-full flex items-center px-3 py-3 text-sm font-medium rounded-md transition-colors touch-target
                     ${selectedEntity === entity.id
                       ? 'bg-saudi-green-100 text-saudi-green-900 border-r-2 border-saudi-green-600'
                       : entity.active
@@ -113,11 +115,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
                       : 'text-gray-400 cursor-not-allowed'
                     }
                   `}
+                  style={{ minHeight: '44px' }}
                 >
-                  <span className="mr-3 text-lg">{entity.icon}</span>
-                  <span className="truncate">{entity.name}</span>
+                  <span className="mr-3 text-lg flex-shrink-0">{entity.icon}</span>
+                  <span className="truncate text-left flex-1">{entity.name}</span>
                   {!entity.active && (
-                    <span className="ml-auto text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">
+                    <span className="ml-auto text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded flex-shrink-0">
                       Coming Soon
                     </span>
                   )}
@@ -127,23 +130,24 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
           </div>
 
           {/* Analytics Categories */}
-          <div className="p-4 border-t border-gray-200">
-            <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+          <div className="p-3 sm:p-4 border-t border-gray-200">
+            <h3 className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
               Analytics Maturity
             </h3>
             <div className="space-y-2">
               <button
                 onClick={() => onEntityChange('analytics-maturity')}
                 className={`
-                  w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors
+                  w-full flex items-center px-3 py-3 text-sm font-medium rounded-md transition-colors touch-target
                   ${selectedEntity === 'analytics-maturity'
                     ? 'bg-saudi-green-100 text-saudi-green-900 border-r-2 border-saudi-green-600'
                     : 'text-gray-700 hover:bg-gray-100'
                   }
                 `}
+                style={{ minHeight: '44px' }}
               >
-                <Brain className="mr-3 h-5 w-5 text-saudi-green-600" />
-                <span className="truncate">Analytics Framework</span>
+                <Brain className="mr-3 h-5 w-5 text-saudi-green-600 flex-shrink-0" />
+                <span className="truncate text-left">Analytics Framework</span>
               </button>
               
               {analyticsCategories.map((category) => {
@@ -153,15 +157,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, selectedEntity, onEn
                     key={category.id}
                     onClick={() => onEntityChange(category.id)}
                     className={`
-                      w-full flex items-start space-x-3 p-2 rounded-lg transition-colors text-left
+                      w-full flex items-start space-x-3 p-3 rounded-lg transition-colors text-left touch-target
                       ${selectedEntity === category.id
                         ? 'bg-saudi-green-100 text-saudi-green-900'
                         : 'hover:bg-gray-50'
                       }
                     `}
+                    style={{ minHeight: '44px' }}
                   >
-                    <IconComponent className={`h-5 w-5 mt-0.5 ${category.color}`} />
-                    <div>
+                    <IconComponent className={`h-5 w-5 mt-0.5 flex-shrink-0 ${category.color}`} />
+                    <div className="flex-1">
                       <h4 className="text-sm font-medium text-gray-900">{category.name}</h4>
                       <p className="text-xs text-gray-500">{category.description}</p>
                     </div>
